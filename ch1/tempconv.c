@@ -1,6 +1,10 @@
 #include <stdio.h>
 
 int main()
+/* 
+	print Fahrenheit-Celsius-Tabelle
+	for fahrenheit = 0, 20, ..., 300
+*/
 {
 	int fahrenheit, celsius;
 	int min, max, step;

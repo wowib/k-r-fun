@@ -1,0 +1,46 @@
+#! /bin/sh
+name='hello'
+echo 'Parameter 1 ist:'$1;
+if [ $# -gt 0 ]; then
+	name=$1;
+#else
+#	echo "Kein Parameter, deshalb wird  ./r "$name"  ausgeführt..."
+fi
+
+if [ -f ./bin/$name ]; then
+	./bin/$name
+else echo "C: "$name" existiert nicht."
+fi
+
+if [ -f ./$name'.m' ]; then
+	clang -fobjc-arc $name.m -o bin/$name-objc
+	./bin/$name-objc
+else echo "Objective-C: "$name" existiert nicht."
+fi
+
+
+if [ -f ./$name'.py' ]; then
+	python3 $name.py
+else echo "Python: "$name".py existiert nicht."
+fi
+
+if [ -f ./$name'.java' ]; then
+	#javac -d bin $name.java
+	java -cp bin $name
+else echo "Java: "$name".java existiert nicht."
+fi
+
+if [ -f ./$name'.js' ]; then
+	node $name.js
+else echo "Node.js: "$name".js existiert nicht."
+fi
+
+if [ -f ./$name'.php' ]; then
+	php $name.php
+else echo "PHP: "$name".php existiert nicht."
+fi
+
+if [ -f ./$name'.sh' ]; then
+	bash $name.sh
+else echo "Bash: "$name".sh existiert nicht."
+fi
